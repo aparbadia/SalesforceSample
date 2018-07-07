@@ -1,0 +1,77 @@
+﻿=============== Salesforce Validation Example  Ashwin
+
+Mailing Street, City, and Country are required.
+		
+OR(
+   ISBLANK( MailingStreet ),
+   ISBLANK( MailingCity ),
+   ISBLANK( MailingCountry )
+)
+
+
+Your total hours cannot exceed 40.
+	Monday_Hours__c + 
+	Tuesday_Hours__c + 
+	Wednesday_Hours__c + 
+	Thursday_Hours__c + 
+	Friday_Hours__c > 40
+
+Commit Amount cannot be decreased.
+		PRIORVALUE(Commit_Amount__c) > Commit_Amount__c
+
+Ensures that a custom field called Drivers License is in the correct A9999999 format when the Mailing State is “CA”
+		
+	AND(
+	MailingState = "CA",
+	NOT(REGEX(Drivers_License__c, "([A-Z]\\d{7})?"))
+	)
+
+Conditional Requored:  	Description of Other Reason is required if picklist is Other
+		
+	AND(   ISPICKVAL( Reason, "Other" ),   ISBLANK(Other_Reason__c) )
+
+
+The milestone Completion Date must occur after the date the case was created and before the case was closed.	
+	CompletionDate  >=  Case.CreatedDate  &&  CompletionDate  <=  Case.ClosedDateCompleti
+
+Annual Revenue cannot exceed 100 billion or Negative.
+		
+	OR(    AnnualRevenue < 0,    AnnualRevenue > 100000000000 )
+	
+ISPICKVAL(Status, "Open - Not Contacted") BEGINS(TEXT(PRIORVALUE(Status)), "Closed")
+
+CloseDate <= TODAY() && NOT IsClosed
+
+Validates that a custom date field contains a date within the current year.
+	YEAR( My_Date__c ) <> YEAR ( TODAY() )
+
+Validates that the Account Number is numeric if not blank.
+	ANDAND((   NOTNOT((ISBLANKISBLANK((AccountNumberAccountN )),    NOT(ISNUMBER(AccountNumber)) )
+
+Account number must be 8 characters long.
+	LEN( AccountNumber) != 8
+
+Salary range must be within $20,000. Adjust the Salary Max or Salary Min values.
+	(Salary_Max__c - Salary_Min__c) > 20000
+
+Website Name formay
+	AND(
+   RIGHT( Web_Site__c, 4) <> ".COM",
+   RIGHT( Web_Site__c, 4) <> ".com",
+   RIGHT( Web_Site__c, 4) <> ".ORG",
+   RIGHT( Web_Site__c, 4) <> ".org",
+   RIGHT( Web_Site__c, 4) <> ".NET",
+   RIGHT( Web_Site__c, 4) <> ".net"
+ )
+
+Conditional Required:
+	ISBLANK(TEXT(Lost_Reason__c)) && ISPICKVAL( StageName , "Closed Lost")
+
+
+IF(COOP__c == True, IF(AND(ISPICKVAL( Account.Type , "Distributor"), false)  ) )
+
+(ISPICKVAL( Competitor__c , "Proposal/Price Quote") || ISPICKVAL( Competitor__c , "Negotiation/Review") ||ISPICKVAL( Competitor__c , "Closed Won") ||ISPICKVAL( Competitor__c , "Closed Lost")) && ISBLANK( TEXT(Competitor__c ))
+
+=================
+
+AND (NOT ISBLANK( Account.Name ),  NOT(MailingPostalCode ==  Account.ShippingPostalCode) )
