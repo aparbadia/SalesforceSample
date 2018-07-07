@@ -1,0 +1,527 @@
+Answers & Explanations _
+All IncorrectCorrect
+Correct		
+ 
+1)	Which statement about products and price books is true?Choose 2 answers
+ 	
+ 	A.	Products without a price re automatically added to the standard price book
+ 	B.	Price books that contain assets cannot contain products
+ 	C.	The standard and list price for a product can be listed in multiple currencies 
+ 	D.	A product can have a different list price in different price books
+
+Ans = C, D	
+ 
+2)	Which statement is true regarding the Answers community?Choose 2 answers
+ 	
+ 	A.	Community experts must be internal Salesforce users
+ 	B.	Unanswered questions are automatically escalated to new cases
+ 	C.	Answers can be displayed externally on a customer or partner portal
+ 	D.	Data categories control access to articles and questions
+Ans = C, D	
+ 
+3)	What should a system administrator consider when setting up Mobile Lite?Choose 2 answers
+ 	
+ 	A.	It must be enabled for the entire organization (Your Answer)
+ 	B.	It allows access to all standard objects in the organization (Missed)
+ 	C.	Only recently viewed records are synchronized
+ 	D.	It allows access to most custom objects in me organization (Your Answer)
+ 	Discuss this Question	
+
+ANS = A,B
+
+4)	Universal Containers wants to create a custom object to capture survey data. Users must be able to select an account from the survey record. Users also need the ability to view related surveys on the account record.How should the system administrator meet these requirements?
+ 	
+ 	A.	Add the survey related list to the account page layout
+ 	B.	Add the account related list to the survey page layout
+ 	C.	Create a lookup relationship field on the survey object
+ 	D.	Create a lookup relationship field on the account object
+
+ANS = A,C		
+ 
+5)	Universal Containers currently assigns its users from the facilities and IT teams to the same profile. Universal Containers recently created a custom object to track company cars and wants only users from the facilities team to have access to this new object.How can an administrator meet this requirement?
+ 	
+ 	A.	Create a custom profile for users on the facilities team.
+ 	B.	Configure field-level security on the new object for the facilities team  
+ 	C.	Modify me standard profile currently shared by both teams
+ 	D.	Assign the facilities team to a new role in the role hierarchy
+ 	Discuss this Question	
+
+ANS = A		
+ 
+6)	Which setting can a system administrator enable in the Salesforce user interface?Choose 2 answers
+ 	
+ 	A.	Related list hover links
+ 	B.	Printable list views
+ 	C.	Customizable recent tags
+ 	D.	Chatter Messenger for specific users
+
+ANS = AB	
+ 
+7)	Universal Containers set the organization-wide defaults for cases to private. When a case is escalated, case ownership changes to a Tier 2 support agent.How can a system administrator give the sales operations team read/write access to all escalated cases?
+ 	
+ 	A.	Create an ownership-based sharing rule
+ 	B.	Create a case escalation rule
+ 	C.	Create a case assignment rule
+ 	D.	Create a criteria-based sharing rule  
+ 	Discuss this Question	
+
+ANS = B	
+ 
+8)	What can an administrator configure for users on the search results page?Choose 3 answers
+ 	
+ 	A.	Filters by which users can narrow down results (Missed)
+ 	B.	Fields being searched on for each object (Your Answer)
+ 	C.	Columns displayed for each object
+ 	D.	Objects included in the search (Your Answer)
+ 	E.	Number pf records displayed for each object (Your Answer)
+ 	Discuss this Question	
+
+ANS - ADE		
+ 
+9)	What can be done with a workflow field update action?Choose 2 answers
+ 	
+ 	A.	Change the record type of a record (Your Answer)
+ 	B.	Update the value of a field on a child object (Missed)
+ 	C.	Update me value of a formula field
+ 	D.	Apply a specific value to a field (Your Answer)
+ 	Discuss this Question	
+
+ANS = BD	
+ 
+10)	How can a system administrator add users to a salesforce organization using Chatter Free?Choose 2 answers
+ 	
+ 	A.	Enable invites to allow users to invite others within specified email domains (Missed)
+ 	B.	Assign Chatter Free l incenses to existing Saleforce users (Your Answer)
+ 	C.	Assign Chatter Free licenses to users outside the specified email domains
+ 	D.	Create users in the organization and assign them a Chatter free license (Your Answer)
+ 	Discuss this Question	
+
+ANS = AD	
+ 
+11)	Which dashboard component can display data from summary rows of a report?Choose 2 answers
+ 	
+ 	A.	Chart (Your Answer)
+ 	B.	Gauge (Missed)
+ 	C.	Metric (Missed)
+ 	D.	Table (Your Answer)
+ 	Discuss this Question	
+
+ANS = BC		
+ 
+12)	How can a sales user relate an opportunity to a campaign?Choose 2 answers
+ 	
+ 	A.	Use the campaign influence related list on the opportunity
+ 	B.	Select the primary campaign source for the opportunity
+ 	C.	Select the campaign record type when creating the opportunity
+ 	D.	Use the campaign hierarchy related list on the opportunity
+
+ANS = AB		
+ 
+13)	Sales management at universal Containers needs to display the information listed below on each account record- Amount of all closed won opportunities- Amount of all open opportunitiesWhich feature should a system administrator use to meet this requirement?
+ 	
+ 	A.	Roll-up summary fields
+ 	B.	Calculated columns in the related list
+ 	C.	Workflow rules with fields updates
+ 	D.	Cross-object formula fields
+
+ANS = A		
+ 
+14)	Where can the multilingual solution search feature be enabled?Choose 2 answers
+ 	
+ 	A.	Self-service portal
+ 	B.	Solution tab search
+ 	C.	Public Knowledge Base
+ 	D.	Salesforce Content
+
+ANS = AC
+
+15)	A time-dependent action is placed in the workflow queue when the record is created.When will the action be removed from the queue?Choose 2 answers
+ 	
+ 	A.	When the action is deleted from the workflow queue
+ 	B.	When the record no longer matches the rule criteria
+ 	C.	When a validation rule is triggered for the record
+ 	D.	When another record triggers the same workflow rule
+
+ANS = AB	
+ 
+16)	Universal containers has two business groups, Products and Services. Bot groups will be using opportunities to track deals, but the different fields are required by each group.How should a system administrator meet this requirement?Choose 2 answers
+ 	
+ 	A.	Create two permission sets
+ 	B.	Create two page layouts (Missed)
+ 	C.	Create two sales processes (Your Answer)
+ 	D.	Create two record types (Your Answer)
+ 	Discuss this Question	
+ANS = BD		
+ 
+17)	What will occur when a system administrator creates a dynamic dashboard?
+ 	
+ 	A.	The dashboard components resize based on the device used to view the dashboard
+ 	B.	The data displayed varies based on the user viewing the dashboard
+ 	C.	The dashboard automatically sends an email when the underlying data changes
+ 	D.	The dashboard refreshes automatically whenever the underlying data changes
+ANS = B		
+ 
+18)	What can be transferred from one user to another user using a mass transfer of account records?Choose 3 answers
+ 	
+ 	A.	Related custom object records
+ 	B.	Open activities
+ 	C.	Open cases
+ 	D.	Closed activities
+ 	E.	Closed cases
+ANS = BDE		
+ 
+19)	When can a validation rule be used to prevent invalid data?Choose 3 answers
+ 	
+ 	A.	When records are submitted using web-to-lead
+ 	B.	When records are imported
+ 	C.	When records are deleted by user
+ 	D.	When records are edited by a user
+ 	E.	When records are updated by a workflow rule
+ABD		
+ 
+20)	Universal Containers has two sales groups. Each group has its own unique sales process.What is the best way to ensure that sales representatives have access to only the stages relevant to their sales process when working on opportunities?
+ 	
+ 	A.	Page layouts
+ 	B.	Multi-select picklists
+ 	XC.	Record types
+ 	D.	Roles
+Correct		
+ 
+21)	When converting a lead, how can an administrator capture custom lead data on the converted contact?
+ 	
+ 	A.	Use the data loader to move the custom lead data
+ 	XB.	Map custom lead fields to custom contact fields
+ 	C.	Map custom lead Fields to standard contact fields
+ 	D.	Use the lead conversion wizard to select the fields
+Incorrect		
+ 
+22)	What is a capability of the Service Cloud (customer) portal?Choose 2 answers
+ 	
+ 	A.	The portal can be customized with corporate branding (Your Answer)
+ 	XB.	Customers can view and edit contacts related to their own accounts (Missed)
+ 	XC.	Customers can log, view, edit, and does their own cases (Your Answer)
+ 	D.	The portal and its users can be created without additional licensing
+ 	Discuss this Question	
+Correct		
+ 
+23)	Universal Containers uses web-to-case to convert support requests submitted through its website into cases. The support team would like Salesforce to automatically send an email containing password reset instructions to the customer when the case subject contains the words "forgot" and "password".What does the administrator need to configure to meet this requirement?
+ 	
+ 	A.	Validation rule
+ 	B.	Support settings
+ 	XC.	Auto-response rule
+ 	D.	Email-to-case
+Correct		
+ 
+24)	What is the purpose of the AppExchange?Choose 2 answers
+ 	
+ 	A.	Partners can download accounts and contacts to collaborate on sales deals
+ 	XB.	Administrators an download and customize pre-built dashboards and reports 
+ 	C.	Support users can install the Service Cloud console custom app
+ 	XD.	Customers can share and install apps published by Salesforce partners
+Incorrect		
+ 
+25)	Where can conditional highlighting be used?Choose 2 answers
+ 	
+ 	A.	Tabular reports (Your Answer)
+ 	XB.	Matrix reports (Missed)
+ 	XC.	Summary reports (Your Answer)
+ 	D.	Enhanced list views
+ 	Discuss this Question	
+Incorrect		
+ 
+26)	What should an administrator consider when setting up Case Feed?
+ 	
+ 	A.	The Use Case Feed permission is automatically active for all profile
+ 	XB.	Case Feed requires the Service Cloud User feature license
+ 	C.	Chatter Feed tracking must be enabled for the case object  
+ 	D.	Case Feed replaces the standard case detail page by default
+ 	Discuss this Question	
+Correct		
+ 
+27)	What must an administrator do when creating a record type?
+ 	
+ 	A.	Set the field-level security for the record type
+ 	B.	Add the record type to the required user records
+ 	XC.	Assign the record type to the appropriate profiles
+ 	D.	Create a new page layout for the record type
+Correct		
+ 
+28)	What will happen when a user attempts to log in to Salesforce from an IP address that is outside the login IP range on the user's profile but within the organization-wide trusted IP range?
+ 	
+ 	A.	The user will be able to log in alter answering a security question
+ 	B.	The user will be able to log in alter the computer is activated
+ 	XC.	The user will not be able to log in at all
+ 	D.	The user will be able to log in without activating the computer
+Correct		
+ 
+29)	A user responsible for managing and creating campaigns us unable to create a new campaign, even though the user's profile has the "Create" profile permission for Campaigns.How should a system administrator grant the correct access to the user?
+ 	
+ 	A.	Grant the user delegated administration rights to campaigns
+ 	XB.	Select me Marketing user checkbox on the user record
+ 	C.	Create a campaign sharing rule to grant access to the user
+ 	D.	Assign the user to the standard Marketing User profile
+Correct		
+ 
+30)	What is a capability of Salesforce Knowledge?Choose 2 answers
+ 	
+ 	XA.	Knowledge only allows a single article type across all data categories
+ 	B.	Knowledge uses data categories and roles to make articles visible to specific users
+ 	C.	Knowledge automatically creates a solution for each new article
+ 	XD.	Knowledge allows an organization to share articles with partner portal users 
+Incorrect		
+ 
+31)	What permission is set in a user's profile?Choose 3 answers
+ 	
+ 	XA.	Run Reports (Your Answer)
+ 	XB.	Object Permissions (Your Answer)
+ 	XC.	Mass Email (Missed)
+ 	D.	Marketing user (Your Answer)
+ 	E.	Active
+ 	Discuss this Question	
+Correct		
+ 
+32)	The sales team at Universal Containers wants an easy solution to gather customer requirements and share presentations with their customers.What should an administrator do to help the sales team achieve this goal?
+ 	
+ 	XA.	Add customers to private Chatter groups
+ 	XB.	Use Chatters files to share presentations
+ 	C.	Add customers to libraries
+ 	D.	Create opportunity teams for customers
+Incorrect		
+ 
+33)	Universal Containers is using a private sharing model. The US sales director needs to full access to all records owned by the US sales representatives.How can this accomplished?
+ 	
+ 	A.	Define a role hierarchy where the US sales director rolls up to the CEO
+ 	XB.	Give the us sales director read/write/edit/delete object permissions on the profile
+ 	C.	Place the US sales director in a queue with US sales representatives
+ 	D.	Define a role hierarchy where the US sales representatives roll up to the US sales director  
+ 	Discuss this Question	
+Incorrect		
+ 
+34)	What is affected by changing the default locale setting for an organization?
+ 	
+ 	A.	Currency
+ 	B.	Language  
+ 	XC.	Date fields
+ 	D.	Time zone
+ 	Discuss this Question	
+Correct		
+ 
+35)	The administrator at Universal Containers will create a custom field to track a specific Tier 2 support user on a case record.What data type should be used when creating this custom field?
+ 	
+ 	A.	Hierarchical relationship
+ 	B.	Formula
+ 	XC.	Lookup relationship
+ 	D.	Lookup filter
+Correct		
+ 
+36)	Which circumstance will prevent a system administrator from deleting a custom field?
+ 	
+ 	A.	The field is part of a field dependency
+ 	B.	The field is used in a report
+ 	C.	The field is used in a page layout
+ 	XD.	The field is used in a workflow field update
+Correct		
+ 
+37)	A user at Universal Containers reports an error message when attempting to log in. The administrator checks the user's login history, but there is no record of the attempted login.What could be the cause of the issue?
+ 	
+ 	A.	The user is attempting to log in with the wrong password
+ 	B.	The user is attempting to log in outside of the profile IP login range
+ 	XC.	The user is attempting to log in in the wrong username
+ 	D.	The user is attempting to log in outside of the profile login hours
+Correct		
+ 
+38)	What tab setting on a profile makes a tab NOT accessible on the All Tabs page or visible in any apps?
+ 	
+ 	XA.	Tab Hidden
+ 	B.	Default On
+ 	C.	Default Off
+ 	D.	Read-Only
+Correct		
+ 
+39)	Universal Containers requires that the organization-wide default for opportunities be set to public read/write. However, sales users are complaining that the opportunity reports return too many results, making it difficult to Find their team's opportunities in the report results.How can the system administrator address this problem?
+ 	
+ 	A.	Move the opportunity reports into a folder with restricted access
+ 	XB.	Use the Show filter to filter report results and reduce records returned
+ 	C.	Move the opportunity reports into each user's personal report folder
+ 	D.	Update the sharing rules to limit user access to certain opportunities
+Correct		
+ 
+40)	Universal Containers has a private sharing model in which regional sales managers are only allowed to view opportunities in their own regions. For reporting purposes, they additionally need read-only access to opportunities in other regions.What permission can a system administrator enable to meet this requirement in the regional sales managers' custom profiles?
+ 	
+ 	A.	"View All Data"
+ 	B.	"Read" for opportunities
+ 	XC.	"View All" for opportunities
+ 	D.	"Visible" for the Sales app
+Correct		
+ 
+41)	A sales user at universal Containers has updated the opportunity stage for an opportunity in the pipeline.What may be updated as a result of the stage change?choose 2 answers
+ 	
+ 	A.	Account rating
+ 	B.	Sales quota
+ 	XC.	Forecast category
+ 	XD.	Probability
+Incorrect		
+ 
+42)	Which statement about Chatter posts and comments is true?Choose 2 answers
+ 	
+ 	A.	Posts to a user's profile can be made private by clicking the lock icon (Your Answer)
+ 	XB.	Updates to the Chatter feed on a record are only visible to users with access to the record (Your Answer)
+ 	C.	Posts to a user's profile are hidden from anyone below that user in the role hierarchy
+ 	XD.	Posts made to a user's profile are visible to all users in the organization (Missed)
+ 	Discuss this Question	
+Incorrect		
+ 
+43)	The cloud scheduler has which capability?Choose 2 answers
+ 	
+ 	A.	The cloud scheduler can be enabled at the user profile level (Your Answer)
+ 	B.	The cloud scheduler allows users to view available meeting times on lead and contact calendars
+ 	XC.	A custom logo can be added to the meeting request email sent to a contact or lead (Missed)
+ 	XD.	Salesforce can automatically propose multiple meeting times base on Salesforce user calendars (Your Answer)
+ 	Discuss this Question	
+Correct		
+ 
+44)	Universal Containers needs to synchronize data between Salesforce and an external financial system.How can a system administrator accomplish this?
+ 	
+ 	A.	Use the data loader to upsert Salesforce records unto financial system
+ 	B.	Use the Excel connector to export records from both systems into Excel
+ 	XC.	Use an external ID field to match records between the systems
+ 	D.	Use the data loader to match records between the systems
+Correct		
+ 
+45)	What item appears in a user's My Unresolved Items after synchronization using Salesforce for Outlook?Choose 2 answers
+ 	
+ 	A.	Notes not associated to a record
+ 	B.	Cases not assigned to a contact
+ 	Xc.	Contacts not assigned to an account
+ 	XD.	Emails not associated to a record
+Correct		
+ 
+46)	The marketing team at Universal Containers users a web-to-lead form to capture lead from its website and a lead assignment rule to assign the leads to the appropriate sales representatives.How can a system administrator ensure that all leads are handled even when they do not meet the assignment criteria?
+ 	
+ 	XA.	Specify a default lead owner
+ 	B.	Specify a default lead creator
+ 	C.	Create an escalation rule to route unassigned leads
+ 	D.	Create a validation rule to route unassigned leads
+Incorrect		
+ 
+47)	Which data can be highlighted in a report using conditional highlighting?Choose 3 answers
+ 	
+ 	A.	Grouped by field names (Your Answer)
+ 	XB.	Summarized totals (Your Answer)
+ 	XC.	Summary formulas (Missed)
+ 	D.	Date fields (Your Answer)
+ 	XE.	Grand totals (Missed)
+ 	Discuss this Question	
+Correct		
+ 
+48)	What type of field allows users to input text, images, and links?
+ 	
+ 	XA.	Text area (rich)
+ 	B.	Text area
+ 	C.	Text and image area
+ 	D.	Input area
+Correct		
+ 
+49)	What feature allows a user to group campaigns within a specific marketing program or initiative?
+ 	
+ 	XA.	Campaign hierarchy
+ 	B.	Campaign members
+ 	C.	Campaign lists
+ 	D.	Campaign influence
+Correct		
+ 
+50)	What does the controlling field determine when field dependencies are being created?
+ 	
+ 	A.	The dependent fields that appear on a layout
+ 	XB.	The values that appear in the dependent field
+ 	C.	The default value populated in the dependent field
+ 	D.	The field-level security for the dependent field
+Incorrect		
+ 
+51)	Which feature license can be assigned to a user record in Salesforce?Choose 2 answers
+ 	
+ 	A.	Console User (Your Answer)
+ 	XB.	Knowledge user (Your Answer)
+ 	XC.	Service Cloud user (Missed)
+ 	D.	Opportunity user
+ 	Discuss this Question	
+Correct		
+ 
+52)	What does a custom report type determine?Choose 2 answers
+ 	
+ 	XA.	The fields that can be used as columns when building a report
+ 	XB.	The objects that are available when building a report
+ 	C.	The custom summary formulas displayed in a resulting report
+ 	D.	The report format of the resulting report
+Correct		
+ 
+53)	A sales executive at Universal Containers wants to be notified whenever high-value opportunities are created for hot accounts.How should an administrator meet this requirement?
+ 	
+ 	A.	Create a validation rule that evaluates the account rating
+ 	XB.	Create a workflow rule on the opportunity object
+ 	C.	Create an auto-response rule on the opportunity object
+ 	D.	Create an escalation rule based on the opportunity amount
+Correct		
+ 
+54)	Which statement is true regarding an approval process?Choose 2 answers
+ 	
+ 	XA.	An approval anion defines the result of record approval or rejection
+ 	XB.	The approval history related list can be used to track the process
+ 	C.	A delegated approver can reassign approval requests
+ 	D.	An assignment rule defines the approver for each process step
+Incorrect		
+ 
+55)	What is a method for adding content to Saleforce CRM content?Choose 2 answers
+ 	
+ 	XA.	Attachments (Missed)
+ 	B.	Documents
+ 	C.	Chatter Files (Your Answer)
+ 	XD.	Libraries (Your Answer)
+ 	Discuss this Question	
+Correct		
+ 
+56)	
+A system administrator at Universal Containers needs to mass update the lead source on a number of opportunity records. 
+
+How can this be accomplished?Choose 2 answers
+
+ 	
+ 	A.	Export opportunities and update using the import wizard
+ 	B.	Use similar opportunities to update the opportunities
+ 	XC.	Export opportunities and update using the data loader
+ 	XD.	Create a list view for opportunities and update using inline editing
+Incorrect		
+ 
+57)	Universal containers wants to automatically back up all Salesforce data on a monthly basis.Which tool can a system administrator use to meet this requirement?
+ 	
+ 	A.	Data export service  
+ 	XB.	Analytic snapshot
+ 	C.	Import wizard
+ 	D.	Scheduled report
+ 	Discuss this Question	
+Correct		
+ 
+58)	Which statement about sharing rules is true?Choose 2 answers
+ 	
+ 	XA.	Sharing rules open up access to records
+ 	B.	Sharing rules are required in public read/write organizations
+ 	C.	Sharing rules grant delete access to records
+ 	XD.	Sharing rules grant record access to roles and public groups
+Correct		
+ 
+59)	Criteria-based sharing rules can be created for which objects?Choose 3 answers
+ 	
+ 	A.	Users
+ 	B.	Campaign Members
+ 	XC.	Opportunities
+ 	XD.	Accounts
+ 	XE.	Contacts
+Incorrect		
+ 
+60)	How can a system administrator grant user access to dashboards?Choose 2 answers
+ 	
+ 	A.	Designate running users
+ 	XB.	Share folders with roles (Your Answer)
+ 	XC.	Share folders with public groups (Missed)
+ 	D.	Create and share data categories (Your Answer)
+ 	Discuss this Question
