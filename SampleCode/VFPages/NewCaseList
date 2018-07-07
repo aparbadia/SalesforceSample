@@ -1,0 +1,12 @@
+<apex:page controller="NewCaseListController">
+      <apex:form >
+       <apex:repeat var="case" value="{!NewCases}">
+            <li>
+                <apex:outputLink value="/lightning/r/Case/{!case.ID}/view" >
+                    {!case.CaseNumber} 
+                </apex:outputLink>
+            </li>
+        </apex:repeat>
+    	</apex:form>
+    
+</apex:page>
