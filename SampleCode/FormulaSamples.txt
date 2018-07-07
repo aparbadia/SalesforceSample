@@ -1,4 +1,4 @@
-============= Salesforce Formula Sample:
+============= Salesforce Formula Sample   Ashwin:
 
 Contract Aging
 	IF(ISPICKVAL(Contract_Status__c, "Activated"),  NOW() - Contract_Activated_Date__c, null)
