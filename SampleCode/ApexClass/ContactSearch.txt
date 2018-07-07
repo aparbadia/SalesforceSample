@@ -1,0 +1,12 @@
+public class ContactSearch {
+
+      public static Contact[] searchForContacts(String sLast, String sZip){
+
+          Contact[] con = [Select Id, Name from Contact
+                  where LastName = :sLast and MailingPostalCode = :sZip];
+       
+            return con;
+ 
+  }
+    
+}
