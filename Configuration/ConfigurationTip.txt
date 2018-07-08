@@ -1,0 +1,9 @@
+========================= Salesforce Configuration Tip:
+
+1) Add picklist values to all
+2) Create new recpord Process type ( selects picklist to keep for each process type)
+3) Cretae New Page Layout for alll Record Type
+4) Create new Record type records, select approprite process type (make sure check Active box)and assign Profiles to Type, make sure its Active
+5) Modify Picklist value by record type
+
+
