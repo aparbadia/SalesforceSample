@@ -1,0 +1,83 @@
+<apex:page standardController="Contact">
+
+<!-- This is a comment -->
+
+    <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png "/>
+
+    <apex:form > 
+    	  <apex:pageBlock title="Contact Summary">
+        	<apex:pageBlockSection >
+        	
+            	First Name: {! Contact.FirstName } <br/>
+            	Last Name: {! Contact.LastName } <br/>
+            	Owner Email: {! Contact.Owner.Email } <br/>
+
+    			<apex:outputField value="{! Opportunity.Name }"/>
+			<apex:outputField value="{! Opportunity.Amount }"/>
+			<apex:outputField value="{! Opportunity.CloseDate }"/>
+			<apex:outputField value="{! Opportunity.Account.Name }"/>
+
+      </apex:pageBlockSection>
+        	<apex:pageBlockButtons >
+            	<apex:commandButton action="{! save }" value="Save" />        
+        	</apex:pageBlockButtons>
+	</apex:form >
+
+
+
+
+<!-- This is a comment for new Form starts-->
+
+    <apex:form >
+    	<apex:repeat var="a" value="{!accounts}">
+            <li>
+                <apex:outputLink value="/{!a.ID}" >
+                    {!a.name}
+                </apex:outputLink>
+            </li>
+        </apex:repeat>
+    </apex:form>
+
+    
+</apex:page>
+
+
+<!-- This is a comment for new Form starts-->
+//////////////////////////////////////////////////////////////////////////////// New Page with Custom Controller
+
+<apex:page controller="NewCaseListController">
+      <apex:form >
+       <apex:repeat var="case" value="{!NewCases}">
+            <li>
+                <apex:outputLink value="/lightning/r/Case/{!case.ID}/view" >
+                    {!case.CaseNumber} 
+                </apex:outputLink>
+            </li>
+        </apex:repeat>
+    	</apex:form>
+    
+</apex:page>
+
+
+<!-- This is a comment for new Form starts-->
+/////////////////////////////////////////////////////////////////////////////////// New Page with Lighting Connector
+
+<apex:page controller="LightningConnectQuickstart">
+    <apex:pageBlock title="Lightning Connect Quickstart" rendered="{!NOT(customerIDsSet)}">
+        <apex:form >
+            <p>
+                <apex:commandButton action="{!setCustomerIDs}" value="Set Customer IDs" />
+                Click the button to assign Customer IDs to Account records. You will need to
+                do this before you do the Lightning Connect Quick Start.
+            </p>
+        </apex:form>
+    </apex:pageBlock>
+    <apex:pageBlock title="Lightning Connect Quickstart" rendered="{!customerIDsSet}">
+        <apex:form >
+            <p>
+                Customer IDs have been successfully assigned to Account records. You can
+                now do the Lightning Connect Quick Start.
+            </p>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>
