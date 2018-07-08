@@ -1,0 +1,190 @@
+public class AccountHandler {
+
+    public static Account insertNewAccount(String AcctName){
+
+    	try {
+        	Account acct = new Account(Name=AcctName, Phone='(703) 451-2487' );
+    		insert acct;
+            return acct;
+ 
+    	} catch (DmlException e) {
+    		System.debug('A DML exception has occurred: ' +
+                e.getMessage());
+     		return null;
+		}
+        
+    }
+    
+}
+
+
+/////////////// MAP
+
+Map<String, String> country_currencies = new Map<String, String>();
+Map<ID, Set<String>> m = new Map<ID, Set<String>>();
+
+
+Map<Integer, String> m = new Map<Integer, String>(); // Define a new map
+m.put(1, 'First entry');                  // Insert a new key-value pair in the map
+m.put(2, 'Second entry');                  // Insert a new key-value pair in the map
+System.assert(m.containsKey(1));  // Assert that the map contains a key
+String value = m.get(2);               // Retrieve a value, given a particular key
+System.assertEquals('Second entry', value);
+Set<Integer> s = m.keySet();       // Return a set that contains all of the keys in the map
+
+
+////////////// Set
+
+
+Set<String> s1 = new Set<String>{'a', 'b + c'}; // Defines a new set with two elements
+Set<String> s2 = new Set<String>(s1); // Defines a new set that contains the 
+                                     // elements of the set created in the previous step
+
+////////////// If Statement
+
+if ([Boolean_condition]) 
+    // Statement 1
+else
+    // Statement 2
+
+
+if (place == 1) {
+    medal_color = 'gold';
+} else if (place == 2) {
+    medal_color = 'silver';
+} else if (place == 3) {
+    medal_color = 'bronze';
+} else {
+    medal_color = null;
+}
+
+////////////// Switch or Case Loop
+
+switch on expression {
+    when value1 {		// when block 1
+        // code block 1
+    }	
+    when value2 {		// when block 2
+        // code block 2
+    }
+    when value3 {		// when block 3
+        // code block 3
+    }
+    when else {		  // default block, optional
+        // code block 4
+    }
+}
+
+
+///////////// While loop
+
+	Integer count = 1;
+
+	while (count < 11) {
+    		System.debug(count);
+    		count++;
+	}
+
+
+////////////// For Each loop
+
+for (***variable*** : list_or_set) {
+    code_block
+}
+
+
+     Messaging.SendEmailResult[] results = Messaging.sendEmail(
+                                new Messaging.SingleEmailMessage[] { mail });
+
+
+    for (Messaging.SendEmailResult res : results) {
+         if (res.isSuccess()) {
+            System.debug('Email sent successfully');
+         }
+         else {
+            sendResult = false;
+            System.debug('The following errors occurred: ' + res.getErrors());                 
+         }
+
+
+
+////////////////// Random Add Contacts
+
+public class  RandomContactFactory {
+   
+    public static List<Contact> generateRandomContacts (Integer numCons, String sLastName) {
+       
+       List<Contact> conslist = new List<Contact>();
+    
+        for(Integer i=0;i<numCons;i++) {          ////////////////////////// For Loop
+            Contact con = new Contact();
+                con.LastName=sLastName;
+            	con.FirstName = 'Test '+ i;
+            conslist.add(con);
+        }    
+    
+        insert conslist;
+        return conslist;
+    }
+   
+}
+
+
+
+
+///////////////////   SOSL  Example
+ /* This comment can wrap over multiple
+     lines without getting interpreted by the
+     parser. */
+
+
+public class ContactAndLeadSearch {
+
+     public static List<List< SObject>> searchContactsAndLeads(String sSearch){
+
+	List<List<sObject>> searchList = [FIND 'Smith' IN ALL FIELDS 
+                   RETURNING Account(Name),Lead(FirstName,LastName)];
+         
+	Account[] searchAccounts = (Account[])searchList[0];
+	Lead[] searchContacts = (Lead[])searchList[1];
+            return searchList;
+ 
+	}
+    
+    
+}
+
+
+///////////////////////Verify Date
+
+public class VerifyDate {
+	
+	//method to handle potential checks against two dates
+	public static Date CheckDates(Date date1, Date date2) {
+		//if date2 is within the next 30 days of date1, use date2.  Otherwise use the end of the month
+		if(DateWithin30Days(date1,date2)) {
+			return date2;
+		} else {
+			return SetEndOfMonthDate(date1);
+		}
+	}
+	
+	//method to check if date2 is within the next 30 days of date1
+	private static Boolean DateWithin30Days(Date date1, Date date2) {
+		//check for date2 being in the past
+        	if( date2 < date1) { return false; }
+        
+        	//check that date2 is within (>=) 30 days of date1
+        	Date date30Days = date1.addDays(30); //create a date 30 days away from date1
+		if( date2 >= date30Days ) { return false; }
+		else { return true; }
+	}
+
+	//method to return the end of the month of a given date
+	private static Date SetEndOfMonthDate(Date date1) {
+		Integer totalDays = Date.daysInMonth(date1.year(), date1.month());
+		Date lastDay = Date.newInstance(date1.year(), date1.month(), totalDays);
+		return lastDay;
+	}
+
+}
