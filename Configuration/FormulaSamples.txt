@@ -1,9 +1,9 @@
 ============= Salesforce Formula Sample   
 
 
-Contract Aging
+Contract Aging  If Statement:
 	IF(ISPICKVAL(Contract_Status__c, "Activated"),  NOW() - Contract_Activated_Date__c, null)
-
+	IF(ISPICKVAL(Contract_Status__c, "Activated"),   TODAY() - Contract_Activated_Date__c, null)
 
 Calculate Discount or Full Price
 
@@ -39,15 +39,13 @@ CASE(
   TODAY() + 3
 )
 
-ISPICKVAL(Type, "Other") && ISBLANK(Other_Type__c)
 
-"This case is " & TEXT(Status)
-
-ISPICKVAL(Priority, "High") && NOT(IsClosed) && (IsEscalated || Days_Since_Last_Update__c > 7)
+Description Adding 2 field:
+	"This case is " & TEXT(Status)
 
 Principal__c * EXP(Interest_Rate__c * (YEAR(TODAY()) - VALUE(YearStarted)))
 
-IF(ISPICKVAL(Contract_Status__c, "Activated"),   TODAY() - Contract_Activated_Date__c, null)
+
 
 IF(IsEscalated, OR(IsClosedOnCreate, 
 ISPICKVAL(Status, 'Closed'), 
