@@ -113,3 +113,41 @@ trigger DmlTriggerBulk on Account(after update) {
     update oppsToUpdate;
 }
 
+///////////////////// Checking Record Criteria
+
+  for (Integer i = 0; i < Trigger.new.size(); i++)    {
+
+	//Comment, BUT, we do this outside of the "For" loop or you'll hit limits
+
+ 	Insert LitInserts.values();
+} 
+
+
+/////////////////////    Trigger for Updating all child record when Staus field chnage in Parent
+
+trigger EventCancelled on Event__c (after update) {
+
+    List<Id> EventId = New List<Id>();
+    
+    for(Event__c eve : Trigger.new){
+        if( eve.Event_Status__C == 'Cancelled'){  EventId.add(eve.Id);   }
+    }  
+ 
+    List<Event_Registration__c> RegList = [SELECT Id FROM Event_Registration__c WHERE Event__r.Id IN :EventId];
+  
+    if (RegList.size() > 0) {
+        
+       for (Event_Registration__c  Reg : RegList) {
+        
+        Reg.Status__C =  'Event Cancelled';
+
+        }     
+
+     update RegList;
+
+    }
+    
+}
+
+
+///////////////////
