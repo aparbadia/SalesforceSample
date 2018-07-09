@@ -1,0 +1,23 @@
+trigger EventCancelled on Event__c (after update) {
+
+//////// Whe nEvent Cancelles, All Registration on that event get cancelled
+
+    List<Id> EventId = New List<Id>();
+    
+    for(Event__c eve : Trigger.new){
+        if( eve.Event_Status__C == 'Cancelled'){  EventId.add(eve.Id);   }
+    }  
+ 
+   	List<Event_Registration__c> RegList = [SELECT Id FROM Event_Registration__c WHERE Event__r.Id IN :EventId];
+  
+    if (RegList.size() > 0) {
+        
+       for (Event_Registration__c  Reg : RegList) {
+        
+        Reg.Status__C =  'Event Cancelled';
+
+    	}     
+
+	 update RegList;
+
+	}
