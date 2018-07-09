@@ -7,3 +7,9 @@
 5) Modify Picklist value by record type
 
 
+
+
+
+////Remove Apex class from Production using Workbench
+
+http://www.salesforceben.com/way-to-delete-apex-classes-from-production/
