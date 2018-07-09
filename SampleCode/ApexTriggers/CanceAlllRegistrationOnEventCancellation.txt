@@ -1,23 +1,20 @@
-trigger EventCancelled on Event__c (after update) {
-
-//////// Whe nEvent Cancelles, All Registration on that event get cancelled
-
-    List<Id> EventId = New List<Id>();
+trigger ContactCancel on Contact (after update) {
     
-    for(Event__c eve : Trigger.new){
-        if( eve.Event_Status__C == 'Cancelled'){  EventId.add(eve.Id);   }
-    }  
+  	List<Id> ObjId = New List<Id>();
+    
+    for(Contact con : Trigger.new){
+        if( con.LeadSource  == 'Other'){  ObjId.add(con.Id);   }
+    }
  
-   	List<Event_Registration__c> RegList = [SELECT Id FROM Event_Registration__c WHERE Event__r.Id IN :EventId];
-  
+   	List<CustomOrder__c> RegList = [SELECT Id FROM CustomOrder__c WHERE contact__r.Id IN :ObjId];
+ 
     if (RegList.size() > 0) {
         
-       for (Event_Registration__c  Reg : RegList) {
-        
-        Reg.Status__C =  'Event Cancelled';
-
+       for (CustomOrder__c  Reg : RegList) {
+       		Reg.Status__C =  'Cancel';
     	}     
 
 	 update RegList;
+    }
 
-	}
+}
