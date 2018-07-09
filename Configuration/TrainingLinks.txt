@@ -60,3 +60,4 @@ https://www.edureka.co/blog/interview-questions/salesforce-interview-questions/
 Lock the record:  https://www.slideshare.net/asagarwal/how-to-lock-records-in-salesforce
 
 
+Sample Apex Code;    https://tekslate.com/15-sample-triggers-different-scenarios/

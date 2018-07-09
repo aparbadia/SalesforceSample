@@ -1,3 +1,11 @@
+
+///// Sampel Apex Code link:
+https://tekslate.com/15-sample-triggers-different-scenarios/
+
+
+
+/////////////////////////////////////////////////
+
 public class AccountHandler {
 
     public static Account insertNewAccount(String AcctName){
