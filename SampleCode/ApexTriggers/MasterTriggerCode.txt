@@ -150,4 +150,16 @@ trigger EventCancelled on Event__c (after update) {
 }
 
 
+/////////////// Trigger Examples 4. Throw an error whenever the user try to delete the contact which is not associated to account
+
+trigger contactBeforeDelete on Contact(before delete){
+	for(Contact contact: trigger.old){
+		if(contact.accountId == null){
+			contact.addError(“Hey! You are not authorized to perform this action.”);
+		}
+	}
+}
+
+
+
 ///////////////////
