@@ -63,6 +63,7 @@ Lock the record:  https://www.slideshare.net/asagarwal/how-to-lock-records-in-sa
 Sample Apex Code;    https://tekslate.com/15-sample-triggers-different-scenarios/
 
 
-
+For Overriding Case Page:
+http://rjpalombo.com/2012/04/override-a-standard-salesforce-page-with-visualforce/
 
 
