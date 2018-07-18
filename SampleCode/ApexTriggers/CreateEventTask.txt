@@ -1,0 +1,19 @@
+trigger CreateCleaningEvent on Service_Contract__c (after insert) {
+
+  List<Event> lstNewEvents = new List<Event>();
+
+  for (ServiceContract__c SC : Trigger.new) {
+  
+  if( SC.End_Contract__c == True)
+  {
+    Event e = new Event();
+    e.StartDateTime = SC.Start__c;
+    e.EndDateTime = SC.End__c;
+    e.Subject = SC.Subject__c;
+    e.WhoId = SC.User__c;	 
+    lstNewEvents.add(e);
+  }
+}
+  insert lstNewEvents;
+
+}
