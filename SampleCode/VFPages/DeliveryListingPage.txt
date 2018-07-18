@@ -1,0 +1,59 @@
+public class DeliveryControllerGroup {
+
+    public Date inputStartDate {get; set;}   	
+    public List<Delivery_Summary__c> DelList {get; set;}
+    public map <Date, Delivery_Summary__c> maplist {get;set;}    
+    public map <Date, Integer> mapglist {get; set;}
+	public List<Date> keys {get ; set;}  	
+    
+    Date inputEndDate, dtCurrent;
+    Integer iCNT = 0;
+
+  
+    public void fetchRecords(){    //// Display all registration in summary format by date
+           
+		keys = new List<Date>();
+    	maplist = new map<Date, Delivery_Summary__c>();
+        mapglist = new map<Date, Integer>();
+    	Delivery_Summary__c eTemp = new Delivery_Summary__c();   
+ 
+        inputEndDate = inputStartdate + 30;
+      	dtCurrent = inputStartdate;
+            
+     
+        for (Integer i=0; i<30; i++) {    ///// Populate maplist
+            eTemp = new Delivery_Summary__c();
+                
+            eTemp.Name = String.valueOf(dtCurrent);
+         	eTemp.Total__C = 0;
+                
+            maplist.put(dtCurrent, eTemp);
+            mapglist.put(dtCurrent, 0);
+            dtCurrent = dtCurrent + 1;
+        }    //// End For loop
+        
+        system.debug(mapglist);
+        
+        for ( AggregateResult ar: [Select Delivery_Date__c, Count(Status__c) CNT from Delivery__c where Delivery_Date__C >= :inputStartDate AND Delivery_Date__C<= :inputEndDate group by Delivery_Date__c] ) { // you need to place a limit of 1000 
+			
+           	system.debug(ar);
+            dtCurrent = (Date) ar.get('Delivery_Date__c');
+        	iCNT = (Integer) ar.get('CNT');
+            system.debug(dtCurrent);
+           	system.debug(iCNT);
+            
+			eTemp = maplist.get(dtCurrent) ;
+            eTemp.Total__c = iCNT;
+            maplist.put(dtCurrent, eTemp);
+            mapglist.put(dtCurrent, iCNT);
+            iCNT = 0;
+        } /////End For loop
+        
+
+  			DelList = maplist.values();
+        	keys.addAll(mapglist.keySet());
+      
+    }  //// End Method   
+    
+
+}  //// End Class
