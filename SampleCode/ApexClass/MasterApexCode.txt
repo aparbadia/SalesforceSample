@@ -138,6 +138,11 @@ public class  RandomContactFactory {
 }
 
 
+////////////  String to Integer and vice Versa
+
+Integer myInt = Integer.valueOf('1234');
+String sInteger = String.valueOf(myInteger);
+
 
 
 ///////////////////   SOSL  Example
