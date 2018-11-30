@@ -1,0 +1,255 @@
+<apex:page standardController="Audit__c" lightningStylesheets="true" extensions="AuditReportEditController">
+
+  <!-- Import the Design System style sheet -->
+<apex:slds />   <apex:form id="form1"> 
+    
+      
+ <!--------------  Regular Read Only Page Block--------->
+        
+  
+    <apex:pageBlock rendered="{!displayReadOnly }" id="readblock" >     
+
+        <apex:pageBlockButtons >
+     
+            <!--   Draft State Buttons   -->        
+            <apex:commandButton value="Update"  action="{!showEditable}" rendered="{!Audit__c.auShowDraft__c}" />
+            <apex:commandButton value="Submit" rendered="{!Audit__c.auShowDraft__c}"  onclick="return ReadValidation();"  action="/flow/Audit_Submit_Audit_Report?vAuditId={!Audit__c.Id}&retURL=lightning/o/Audit__c/list?filterName=Recent" />                
+            <!--    <apex:commandButton value="Validate to Submit" rendered="{!Audit__c.auShowDraft__c}"  onclick="return ReadValidation();"  />     -->
+                            
+            <!---   Pending Approval Butttons -->
+            <apex:commandButton value="Update"  action="{!showEditable}" rendered="{!Audit__c.auShowPA__c}" />
+            <apex:commandButton value="Reject" rendered="{!Audit__c.auShowPA__c}"  action="/flow/Audit_Set_Status?vAuditId={!Audit__c.Id}&vStatus=Draft&retURL=lightning/o/Audit__c/list?filterName=Recent"  /> 
+            <apex:commandButton value="No Review Required" rendered="{!Audit__c.auShowPA__c}"  action="/flow/Audit_Set_Status?vAuditId={!Audit__c.Id}&vStatus=Published&retURL=lightning/o/Audit__c/list?filterName=Recent"  /> 
+            <apex:commandButton value="Approve/Send for Review" rendered="{!Audit__c.auShowPA__c}"  action="/flow/Audit_Set_Status?vAuditId={!Audit__c.Id}&vStatus=Review Period&retURL=lightning/o/Audit__c/list?filterName=Recent"  /> 
+           
+            <!---   Reviewed State Butttons -->            
+            <apex:commandButton value="Update"  action="{!showEditable}" rendered="{!Audit__c.auShowReviewed__c}" />    
+            <apex:commandButton value="Reject" rendered="{!Audit__c.auShowReviewed__c}"  action="/flow/Audit_Set_Status?vAuditId={!Audit__c.Id}&vStatus=Draft&retURL=lightning/o/Audit__c/list?filterName=Recent"  /> 
+            <apex:commandButton value="Publish  Report" rendered="{!Audit__c.auShowReviewed__c}"  action="/flow/Audit_Set_Status?vAuditId={!Audit__c.Id}&vStatus=Published&retURL=lightning/o/Audit__c/list?filterName=Recent"  />     
+          
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection columns="2"   >
+            <apex:outputField value="{!Audit__c.Name}" /> 
+            <apex:outputField value="{!Audit__c.auAuditName__c}"  />
+            <apex:outputField value="{!Audit__c.auReportType__c}"  />
+            <apex:outputField value="{!Audit__c.auFiscalYear__c}"  />
+            <apex:outputField value="{!Audit__c.auLeadAuditor__c}" />                
+            <apex:outputField value="{!Audit__c.auSource__c}" /> 
+            <apex:outputField value="{!Audit__c.auLocation__c}"  />
+            <apex:outputField value="{!Audit__c.auOffice__c}"  /> 
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Dates"   >
+            <apex:outputField value="{!Audit__c.auDCFStartDate__c}" rendered="{!IF(Audit__c.auLocation__c =='WCF', false, true)}" /> 
+            <apex:outputField value="{!Audit__c.auDCFEndDate__c}" rendered="{!IF(Audit__c.auLocation__c =='WCF', false, true)}"/>
+            <apex:outputField value="{!Audit__c.auWCFStartDate__c}" rendered="{!IF(Audit__c.auLocation__c =='DCF', false, true)}"  />
+            <apex:outputField value="{!Audit__c.auWCFEndDate__c}" rendered="{!IF(Audit__c.auLocation__c =='DCF', false, true)}" />
+            <apex:outputField value="{!Audit__c.auRootCauseDueDate__c}" />                
+            <apex:outputField value="{!Audit__c.auImplementDueDate__c}"  /> 
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection columns="1" title="Notes"  >
+            <apex:outputField value="{!Audit__c.auScope__c}"    />
+            <apex:outputField value="{!Audit__c.auRecommendation__c}"    />
+            <apex:outputField value="{!Audit__c.auSummary__c}"    />
+            <apex:outputField value="{!Audit__c.auStrengths__c}"    />
+        </apex:pageBlockSection>         
+    </apex:pageBlock>
+       
+<!---   System Fields Page Block -->
+       
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2" title="System Info"  >
+            <apex:outputField value="{!Audit__c.CreatedById}" />
+            <apex:outputField value="{!Audit__c.LastModifiedById}" />         
+            <apex:outputField value="{!Audit__c.CreatedDate}" />
+            <apex:outputField value="{!Audit__c.LastModifiedDate}" /> 
+        </apex:pageBlockSection>            
+    </apex:pageBlock>
+  
+  
+  
+  
+    
+<!-----  Editable Page Block -->
+
+    <apex:outputPanel id="tracking" rendered="{!displayEdit }" >
+        <div aria-hidden="false" role="alertdialog" class="slds-modal slds-modal_large slds-fade-in-open" id="idDialog3" > 
+            <div class="slds-modal__container slds-modal_large" >
+                <header class="slds-modal__header slds-theme_warning">
+                    <h2 class="slds-text-heading_medium" id="prompt-heading-id"> Update Audit Record</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                  
+
+        <apex:pageBlock id="EditBlock"  >   
+   
+            <apex:pageBlockButtons >  
+                <apex:commandButton value="Save" action="{! Save}"   rendered="{!displayEdit }" />              
+                <apex:commandButton value="Cancel" action="{! Cancel}" rendered="{!displayEdit }" />
+                <apex:commandButton value="Validate to Submit" rendered="{!Audit__c.auShowDraft__c}"  onclick="return EditValidation();"  /> 
+            </apex:pageBlockButtons>
+           
+            <apex:pageBlockSection columns="1"  id="InfoSection" >
+                <apex:inputField value="{!Audit__c.Name}" /> 
+                <apex:inputField value="{!Audit__c.auAuditName__c}" />
+                <apex:inputField value="{!Audit__c.auReportType__c}" id="ReportType" />
+                <apex:inputField value="{!Audit__c.auFiscalYear__c}" id="FiscalYear" />
+                <apex:inputField value="{!Audit__c.auLeadAuditor__c}" />                
+                <apex:inputField value="{!Audit__c.auSource__c}" id="Source"/> 
+                
+                <apex:inputField value="{!Audit__c.auLocation__c}" id="Location" >
+                    <apex:actionSupport event="onchange"  rerender="DateSection"  />
+                </apex:inputField>  
+                
+                <apex:inputField value="{!Audit__c.auOffice__c}" id="Office" />                          
+                        
+            </apex:pageBlockSection>            
+         
+            <apex:pageBlockSection title="Dates"  columns="1" id="DateSection"  >
+                <apex:inputField value="{!Audit__c.auDCFStartDate__c}" id="DCFStart" /> 
+                <apex:inputField value="{!Audit__c.auDCFEndDate__c}"  id="DCFEnd" />
+                <apex:inputField value="{!Audit__c.auWCFStartDate__c}" id="WCFStart"   />
+                <apex:inputField value="{!Audit__c.auWCFEndDate__c}"  id="WCFEnd" />
+                <apex:inputField value="{!Audit__c.auRootCauseDueDate__c}" id="RootCause"/>                
+                <apex:inputField value="{!Audit__c.auImplementDueDate__c}" id="Implement"  /> 
+   
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="1" title="Notes" id="NoteSection">
+                <apex:inputField value="{!Audit__c.auScope__c}"   />
+                <apex:inputField value="{!Audit__c.auRecommendation__c}"  id="Recommendation" /> 
+                <apex:inputField value="{!Audit__c.auSummary__c}"  id="Summary" />
+                <apex:inputField value="{!Audit__c.auStrengths__c}" id="Strength" />         
+            </apex:pageBlockSection>
+       
+        </apex:pageBlock>                       
+                                                   
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"  id="idBackDrop3"></div>
+    </apex:outputPanel>
+
+<apex:actionFunction name="ApexSave" action="{!Save}" onComplete="alert('Record Saved Successfully') ;"/>
+    
+</apex:form> 
+
+<script>
+    //////  Open-Close Modal Window Script
+    function openWindow3() {
+        document.getElementById("idDialog3").className = document.getElementById("idDialog3").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        document.getElementById("idBackDrop3").className = document.getElementById("idBackDrop3").className.replace( /(?:^|\s)slds-backdrop_close(?!\S)/g , ' slds-backdrop_open');
+        vMsg = "TEST Error";
+    }
+
+    function closeWindow3(){
+        document.getElementById("idDialog3").className = document.getElementById("idDialog3").className.replace( /(?:^|\s)slds-fade-in-open(?!\S)/g , ' slds-fade-in-close');
+        document.getElementById("idBackDrop3").className = document.getElementById("idBackDrop3").className.replace( /(?:^|\s)slds-backdrop_open(?!\S)/g , ' slds-backdrop_close');
+    }
+        
+</script>
+
+<script>
+  
+    function EditValidation()     /////  Verification on Edit Modal-Window
+    {
+        var EditValidated=true;
+        vMsg="";
+        bMsg=false;
+        
+        var vReportType = document.getElementById("{!$Component.form1.EditBlock.InfoSection.ReportType}").value;
+        var vFiscalYear = document.getElementById("{!$Component.form1.EditBlock.InfoSection.FiscalYear}").value;
+        var vSource = document.getElementById("{!$Component.form1.EditBlock.InfoSection.Source}").value;
+        var vLocation = document.getElementById("{!$Component.form1.EditBlock.InfoSection.Location}").value;
+        var vOffice = document.getElementById("{!$Component.form1.EditBlock.InfoSection.Office}").value;
+  
+        var vRootCause = document.getElementById("{!$Component.form1.EditBlock.DateSection.RootCause}").value;
+        var vImplement = document.getElementById("{!$Component.form1.EditBlock.DateSection.Implement}").value;
+        var vDCFStart = document.getElementById("{!$Component.form1.EditBlock.DateSection.DCFStart}").value;
+        var vDCFEnd = document.getElementById("{!$Component.form1.EditBlock.DateSection.DCFEnd}").value;
+        var vWCFStart = document.getElementById("{!$Component.form1.EditBlock.DateSection.WCFStart}").value;
+        var vWCFEnd = document.getElementById("{!$Component.form1.EditBlock.DateSection.WCFEnd}").value;     
+        
+       
+        if(vReportType==""){  
+            alert("Report Type is missing!");  EditValidated= false;  
+        }else if(vFiscalYear=="") {
+            alert("Fiscal Year  is missing!"); EditValidated= false;  
+        }else if(vSource=="") {
+            alert("Source field  is missing!");    EditValidated= false;       
+        }else if(vLocation=="") {
+            alert("Location field  is missing!");    EditValidated= false;       
+        }else  if(vOffice=="") {
+            alert("Office field  is missing!");    EditValidated= false;       
+        }else  if(vRootCause=="") {
+            alert("Root Cause Due Date field  is missing!");    EditValidated= false;       
+        }else  if(vImplement=="") {
+            alert("CAP Implementation Date  is missing!");    EditValidated= false;      
+    
+        }else if((vDCFStart == "" || vDCFEnd == "") && vLocation.includes("DCF")) {
+            alert("DCF Start/End Date is missing!");         EditValidated=false;    
+        }else if((vWCFStart == "" || vWCFEnd == "") && vLocation.includes("WCF")) {
+            alert("WCF Start/End Date is missing!");         EditValidated=false;            
+        
+                 
+        }else  {
+            EditValidated=true;
+            alert("No Validation error found!!!, Enjoy & Relax.................");   
+            ApexSave();
+        }  //// End-if
+ 
+           return EditValidated;
+    }   ///// End Function
+    
+    
+    function ReadValidation()    ///// Verification on read mode page
+    {
+        var ReadValidated=true;
+        var vLoc="{!Audit__c.auLocation__c}";
+
+        if( "{!Audit__c.auReportType__c}" == ""){  
+            alert("Report Type is missing!");    ReadValidated=false;  
+        }else if("{!Audit__c.auFiscalYear__c}" == "") {
+            alert("Fiscal Year is missing!");    ReadValidated=false;  
+        }else if("{!Audit__c.auSource__c}" == "") {
+            alert("Source field is missing!");         ReadValidated=false;       
+        }else if( "{!Audit__c.auOffice__c}" == ""){  
+            alert("Office is missing!");    ReadValidated=false;  
+        }else if("{!Audit__c.auLocation__c}" == "") {
+            alert("Location is missing!");         ReadValidated=false;       
+        }else if( "{!Audit__c.auRootCauseDueDate__c}" == ""){  
+            alert("Root Cause Due Date is missing!");    ReadValidated=false;  
+        }else if("{!Audit__c.auImplementDueDate__c}" == "") {
+            alert("CAP Implementation Date is missing!");         ReadValidated=false;       
+              
+        }else if("{!Audit__c.auSummary__c}" == "") {
+            alert("Summary field is missing!");         ReadValidated=false;    
+        }else if("{!Audit__c.auRecommendation__c}" == "") {
+            alert("Recommendation field is missing!");         ReadValidated=false;    
+        }else if("{!Audit__c.auStrengths__c}" == "") {
+            alert("Strength field is missing!");         ReadValidated=false;    
+            
+        }else if(("{!Audit__c.auDCFStartDate__c}" == "" || "{!Audit__c.auDCFEndDate__c}" == "") && vLoc.includes("DCF"))  {
+            alert("DCF Start/End Date is missing!");         ReadValidated=false;    
+        }else if(("{!Audit__c.auWCFStartDate__c}" == "" || "{!Audit__c.auWCFEndDate__c}" == "") && vLoc.includes("WCF"))  {
+            alert("WCF Start/End Date is missing!");         ReadValidated=false;    
+                            
+        }else { 
+        
+           
+            var vAgree=confirm("No validation error found. Are you sure you want to submit report?");
+            if (vAgree) {ReadValidated=true } else {ReadValidated=false}
+            
+            ///// alert("Audit Report is ready to Submit for Approval, Submit flow is take over this process.");    
+        }     //// End-If
+        
+
+          return ReadValidated;
+    }    //// End Function
+
+</script>
+
+
+</apex:page>
